@@ -1,6 +1,8 @@
 THis file is my test1
 # make sure I am in the right file path
 getwd()
+setwd(dir = "/Users/presidentalintern/Desktop/Data_Course_HOOPER/Exams/Exam_1")
+getwd()
 
 # step 1 turn csv into data frame
 read.csv("cleaned_covid_data.csv")
