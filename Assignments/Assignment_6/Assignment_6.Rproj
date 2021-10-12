@@ -1,14 +1,60 @@
-Version: 1.0
+#load packages
+library(tidyverse)
+library(janitor)
+library(readxl)
+library(tidyr)
+library(dplyr)
+library(magrittr)
+library(gganimate)
 
-RestoreWorkspace: Default
-SaveWorkspace: Default
-AlwaysSaveHistory: Default
+#load data
+read_csv("../../../Data_Course_HOOPER/Data/BioLog_Plate_Data.csv")
+dat <- read_csv("../../../Data_Course_HOOPER/Data/BioLog_Plate_Data.csv")
 
-EnableCodeIndexing: Yes
-UseSpacesForTab: Yes
-NumSpacesForTab: 2
-Encoding: UTF-8
+# tidy column names 
+colnames(dat) <- make_clean_names(colnames(dat))
 
-RnwWeave: Sweave
-LaTeX: pdfLaTeX
-This is my Assingment 6 project
+names(dat) <- make_clean_names(names(dat))
+names(dat)
+
+dat$sample_id %>% unique()
+
+#convert to long tidy format
+
+df <- dat %>%
+  pivot_longer(cols = starts_with("hr_"),
+               names_to = "time",
+               values_to = "absorbance",
+               names_prefix = "hr_")  %>%
+  mutate(time = as.numeric(time)) %>%
+  mutate(type = case_when(sample_id == "Clear_Creek" ~ 'Water',
+                          sample_id == "Waste_Water" ~ "Water",
+                          TRUE ~ "Soil"))
+
+
+# plot 1
+
+df %>%
+  filter(dilution == 0.1) %>%
+  ggplot(aes(x=time, y=absorbance, color=type)) +
+  geom_smooth(se=FALSE) + 
+  facet_wrap(~substrate) + 
+  labs(subtitle = "Just Dilution == 0.1",
+       x="Time",
+       y="Absorbance",
+       color="Type") + 
+  theme_minimal()
+
+# plot 2 
+
+df$substrate %>% unique()
+
+p <- df %>%
+  filter(substrate == "Itaconic Acid") %>%
+  group_by(dilution, sample_id, time) %>%
+  summarise(Mean_Absorbance = mean(absorbance)) %>%
+  ggplot(aes(x=time, y = Mean_Absorbance, color = sample_id)) +
+  geom_line() +
+  facet_wrap(~ dilution)
+
+p + transition_reveal(time)
