@@ -1,0 +1,25 @@
+
+Call:  glm(formula = salary ~ state + tier + rank, data = dat)
+
+Coefficients:
+(Intercept)      stateAL      stateAR      stateAZ      stateCA      stateCO      stateCT  
+    474.830      -70.503      -55.251      -84.749       22.567      -40.960       37.743  
+    stateDC      stateDE      stateFL      stateGA      stateHI      stateIA      stateID  
+     -9.245      -17.948      -39.752      -38.424       35.449      -36.255      -87.703  
+    stateIL      stateIN      stateKS      stateKY      stateLA      stateMA      stateMD  
+    -31.317      -44.313     -103.211      -68.864      -65.740       33.907       -9.555  
+    stateME      stateMI      stateMN      stateMO      stateMS      stateMT      stateNC  
+    -24.472      -21.459      -18.854      -61.568     -101.578     -119.917      -46.821  
+    stateND      stateNE      stateNH      stateNJ      stateNM      stateNV      stateNY  
+    -84.897      -56.407      -43.739       63.822      -96.851      -16.551        8.286  
+    stateOH      stateOK      stateOR      statePA      stateRI      stateSC      stateSD  
+    -30.483      -49.882      -48.175       14.719       14.245      -65.400      -86.022  
+    stateTN      stateTX      stateUT      stateVA      stateVT      stateWA      stateWI  
+    -65.864      -45.609      -58.226      -33.536      -47.411      -39.474      -37.417  
+    stateWV      stateWY      tierIIA      tierIIB    rankAssoc     rankFull  
+    -79.629     -112.050      -79.331     -131.870       63.865      170.794  
+
+Degrees of Freedom: 40223 Total (i.e. Null);  40169 Residual
+  (1536 observations deleted due to missingness)
+Null Deviance:	    4.95e+08 
+Residual Deviance: 143900000 	AIC: 443400
