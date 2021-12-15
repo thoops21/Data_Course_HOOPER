@@ -1,0 +1,17 @@
+roject goal: Load a messy dataset into R, clean the data, create 4-5 charts or tables that have summary stats about your data, and create 4-5 charts or tables that provide analytic insight. Your output should be an html rmarkdown document.
+
+How do prices of listings vary by location?
+How does the demand for Airbnb rentals fluctuate across the year?
+Are the demand and prices of the rentals correlated?
+What are the different types of properties in DC? Do they vary by neighborhood?
+What localities in DC are rated highly by guests?
+What makes a host Super host?
+Do regular hosts and super hosts have different cancellation and booking policies?
+Are there any common themes that can be identified from the free-text section of the reviews? What aspects of the rental experience do people like and what aspects do they abhor?
+
+Resume skills practiced: R, data cleaning, data visualization
+
+Recommended packages: dplyr, tidyr, ggplot2, kableExtra, others as needed
+
+Data ideas to get you started: Washington DC Airbnb
+
